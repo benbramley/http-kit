@@ -442,8 +442,8 @@ public class HttpClient implements Runnable {
                 try {
                     pending.poll();
                     SocketChannel ch = SocketChannel.open();
-                    ch.setOption(StandardSocketOptions.SO_KEEPALIVE, Boolean.TRUE);
-                    ch.setOption(StandardSocketOptions.TCP_NODELAY, Boolean.TRUE);
+                    ch.socket().setKeepAlive(true);
+                    ch.socket().setTcpNoDelay(true);
                     if (bindAddress != null) {
                       ch.bind(bindAddress);
                     }
